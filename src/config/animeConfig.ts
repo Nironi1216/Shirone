@@ -44,9 +44,10 @@ export const animeConfig: AnimeConfig = withUserConfig("anime", {
 	title: "$t:anime",
 	description: "$t:animeBanner",
 
-	/** 主数据源选择 */
+	/** 主数据源选择：使用 B 站追番快照（由 pnpm anime:sync 生成） */
 	source: {
-		kind: "local",
+		kind: "snapshot",
+		provider: "bilibili",
 		// provider: "bangumi",
 		// file: "bangumi.json",
 		// fetchOnDev: true,
@@ -69,8 +70,8 @@ export const animeConfig: AnimeConfig = withUserConfig("anime", {
 			},
 		},
 		bilibili: {
-			enable: false,
-			vmid: "", // 填入你的 B 站公开 UID
+			enable: true,
+			vmid: "249086911", // B 站 UID
 			sessdataEnv: "BILI_SESSDATA",
 			cover: {
 				mode: "local", // "local" 站内下载缓存（推荐）| "remote" 远程链接 | "none"
