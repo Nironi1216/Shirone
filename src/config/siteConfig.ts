@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	site: "https://shirone.mysqil.com/",
 	base: "/",
 	title: "Neyuuのblog",
-	subtitle: "记录生活、折腾与一切小确幸",
+	subtitle: "人间漫游",
 	// 电脑端顶栏标题与导航内容区域："left" 左对齐，"center" 居中。
 	topAppBar: {
 		contentAlign: "center",
@@ -31,7 +31,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	// IANA time zone for precise post and moment timestamps. It is independent of lang.
 	timeZone: "Asia/Shanghai",
 	themeColor: {
-		hue: 315, // Default hue 0-360. 站点设计默认粉紫（偏二次元）；262 紫 / 345 粉 也可选
+		hue: 262, // Default hue 0-360. 站点设计默认粉紫（偏二次元）；262 紫 / 345 粉 也可选
 		fixed: false, // Hide the theme color picker for visitors
 		// Dynamic Material 3 palette style (TonalSpot/Vibrant/Content/Expressive/Rainbow/FruitSalad/Monochrome/Neutral/Fidelity)
 		style: "tonalSpot",
@@ -57,8 +57,24 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 		// desktop 用于 >= 1024px；mobile 仅用于 < 1024px 的首页，手机非首页不显示壁纸。
 		// 数组顺序就是轮播顺序；只需要静态 Banner 时，每组保留一张图片即可。
 		src: {
-			desktop: ["assets/images/banner/desktop/1.webp"],
-			mobile: ["assets/images/banner/mobile/1.webp"],
+			desktop: [
+				"assets/images/banner/desktop/1.webp",
+				"assets/images/banner/desktop/2.webp",
+				"assets/images/banner/desktop/3.webp",
+				"assets/images/banner/desktop/4.webp",
+				"assets/images/banner/desktop/5.webp",
+				"assets/images/banner/desktop/6.webp",
+				"assets/images/banner/desktop/7.webp",
+			],
+			mobile: [
+				"assets/images/banner/mobile/1.webp",
+				"assets/images/banner/mobile/2.webp",
+				"assets/images/banner/mobile/3.webp",
+				"assets/images/banner/mobile/4.webp",
+				"assets/images/banner/mobile/5.webp",
+				"assets/images/banner/mobile/6.webp",
+				"assets/images/banner/mobile/7.webp",
+			],
 		},
 		// 图片裁切焦点："top"、"center" 或 "bottom"。
 		position: "center",
@@ -71,13 +87,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 			// 仅在首页 Banner 中显示，标题与副标题会上下居中排列。
 			enable: true,
 			title: "Neyuuのblog",
-			subtitle: [
-				"欢迎来到我的小天地",
-				"记录生活里的每一束光",
-				"慢慢写，慢慢走，慢慢长大",
-				"愿你在此找到片刻安宁",
-				"今日无事，却也值得一记",
-			],
+			subtitle: ["人间漫游"],
 			typewriter: {
 				// 副标题逐字显示；关闭后直接显示完整副标题。
 				enable: true,
@@ -88,7 +98,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 				// 打字完成后停顿时间，单位为毫秒。
 				pauseTime: 2000,
 				// 完成后是否循环播放；关闭表示只播放一次。
-				loop: true,
+				loop: false,
 			},
 		},
 		carousel: {
