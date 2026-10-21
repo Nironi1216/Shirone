@@ -1,26 +1,41 @@
-# About Shirone
+# 关于
 
-Welcome to the demo site of **Shirone** (白音) — an expressive, anime-inspired blog theme built on the **Material 3 Expressive (M3E)** design system.
+你好，我是 **Neyuu**。
 
-::github{repo="LyraVoid/Shirone"}
+> 梦安魂于九霄。
 
-## ✦ Design & Philosophy
+这是我给自己的一句话。说不清它具体指什么，大概是一种状态：明明站在地上，心思却总飘在半空中。后来给这个博客起名叫「人间漫游」，也算是同一回事——人在这儿走，魂在别处游。
 
-Shirone aims to combine the warmth of expressive anime aesthetics with the rigor of modern web engineering:
+## 我在做什么
 
-- **Dynamic Chromatic Spell**: Full dynamic HCT palette generation responding seamlessly to light/dark modes and user preferences with zero layout shifts.
-- **Seamless Shell Navigation**: Persistent application shell driven by Swup for continuous music playback, smooth page transitions, and preserved state.
-- **Rich Story Grimoire**: Markdown and MDX authoring with KaTeX math, Mermaid diagrams, interactive admonitions, expressive code blocks, and adaptive image galleries.
-- **Zero Extra Burden**: Optional integrations (comments, analytics, music widgets) load dynamically on demand — zero DOM footprint and zero bundle overhead when disabled.
+大部分时间在电脑前，折腾一些说不上有用的东西。写代码、修 bug、装环境、卸载环境，然后再装回来。偶尔做点别的：画画、听歌、看书，或者只是发呆。
 
-## ✦ Tech Stack
+不算特别擅长什么，但对「把东西做出来」这件事一直有热情。
 
-- **Framework**: [Astro 7](https://astro.build/) & [Svelte 5](https://svelte.dev/) (Runes-driven islands)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & [Stylus](https://stylus-lang.com/)
-- **Design Standard**: [Material 3 Expressive](https://m3.material.io/)
-- **Typography**: Outfit & Yozai (悠哉圆体) with automated build-time subsetting
-- **Search Engine**: [Pagefind](https://pagefind.app/) offline full-text search
+## 这个博客
 
-## ✦ Credits
+这里不打算写成教程站，也不打算凹人设。就是记录。
 
-- **Font**: [Yozai Font (悠哉字体)](https://github.com/lxgw/yozai-font) by [lxgw](https://github.com/lxgw)
+大概会有三类内容：
+
+- **技术与折腾** —— 踩过的坑、解决过的问题。写给自己回看，也写给那个恰好搜到同样报错的人。
+- **生活与随想** —— 读过的书、看过的片子、走神时的念头。
+- **一些喜欢的东西** —— 画、歌、光线，和说不清但想留下来的瞬间。
+
+更新不定时。有话说就写，没话说就空着。
+
+## 关于这个站
+
+用 [Astro](https://astro.build/) 搭建，主题是开源的 [Shirone](https://github.com/LyraVoid/Shirone)，我自己改了些配色、壁纸和字体。中文正体使用悠哉圆体，首页标题使用霞鹜文楷，两者都是开源可商用的字体。
+
+如果你也喜欢这套主题，可以去原仓库看看，作者的完成度很高。
+
+## 找我
+
+- GitHub：[Nironi1216](https://github.com/Nironi1216)
+
+其他平台暂时没有，想联系的话开个 issue 也行。
+
+---
+
+*感谢你看到这里。*
