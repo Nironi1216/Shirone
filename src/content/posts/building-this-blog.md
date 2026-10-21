@@ -46,8 +46,6 @@ draft: false
 
 ![设备页填好之后的样子](/images/posts/building-this-blog/devices.webp)
 
-描述尽量说人话，手机那条写的是"225g，放裤兜里会往下坠"，而不是"轻薄便携"。
-
 番剧页接了 B 站追番列表，77 部：
 
 ![番剧页，数据来自 B 站](/images/posts/building-this-blog/anime.webp)
