@@ -4,7 +4,7 @@ published: 2026-10-22
 description: 从 fork 主题到绑上域名，中间踩的坑、改坏又修好的东西，以及为了能随手发条动态绕的那三圈。
 tags: [折腾, 博客, Astro]
 category: 技术
-image: /images/posts/building-this-blog/home-mobile.webp
+image: /images/posts/building-this-blog/wallpaper-mobile.webp
 draft: false
 ---
 
