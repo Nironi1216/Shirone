@@ -50,15 +50,19 @@ export const commentConfig: CommentConfig = withUserConfig("comment", {
 	giscus: {
 		/** 公开仓库，格式 "owner/repo"（必填） */
 		repo: "Nironi1216/Shirone",
-		/** 仓库 ID，从 giscus.app 配置生成器获取（必填） */
-		repoId: "1426820407",
+		/**
+		 * 仓库 ID（必填）。注意是 GraphQL node ID（R_kgDO 开头），
+		 * 不是 REST 接口那个纯数字 id。
+		 */
+		repoId: "R_kgDOVQuNNw",
 		/** Discussion 分类名，如 "Announcements"；留空表示不限制分类搜索范围 */
 		category: "Announcements",
 		/**
-		 * 分类 ID（必填）。取自 giscus.app 生成的 data-category-id。
-		 * 对应 Announcements 分类。
+		 * 分类 ID（必填）。DiscussionCategory 的 node ID，形如 DIC_kwDOxxxx。
+		 * 待从 giscus.app 生成的代码中取 data-category-id 后填入。
+		 * 留空时 resolveCommentOptions 返回 null，评论区不渲染，无副作用。
 		 */
-		categoryId: "R_kgDOVQuNNw",
+		categoryId: "",
 		/** 页面 ↔ Discussion 映射：pathname（默认）/ url / title / og:title / specific / number */
 		mapping: "pathname",
 		/** 严格标题匹配（SHA-1 校验），避免 GitHub 模糊搜索误配相似标题 */
