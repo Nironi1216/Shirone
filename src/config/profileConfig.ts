@@ -10,18 +10,8 @@ export const profileConfig: ProfileConfig = withUserConfig("profile", {
 	name: "Neyuu",
 	bio: "梦安魂于九霄。",
 	links: [
-		{
-			name: "X",
-			icon: "fa7-brands:x-twitter", // Visit https://icones.js.org/ for icon codes
-			// You will need to install the corresponding icon set if it's not already included
-			// `pnpm add @iconify-json/<icon-set-name>`
-			url: "https://x.com",
-		},
-		{
-			name: "Steam",
-			icon: "fa7-brands:steam",
-			url: "https://store.steampowered.com",
-		},
+		// 需要新增社交入口时，按下面格式追加即可：
+		// { name: "显示名", icon: "fa7-brands:图标名", url: "https://..." }
 		{
 			name: "GitHub",
 			icon: "fa7-brands:github",
