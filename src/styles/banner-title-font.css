@@ -1,20 +1,40 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   首页横幅标题专用字体：霞鹜文楷 LXGW WenKai Screen
+   首页横幅标题专用字体：霞鹜文楷 LXGW WenKai（Screen 版）
    ─────────────────────────────────────────────────────────────────────────────
-   字体文件来自项目依赖 `lxgw-wenkai-screen-webfont`（OFL 协议，可商用），
-   随构建一起打包，因此 Windows / 安卓 / iOS 访客的显示完全一致。
+   【为什么这样写】
+   直接写 `.banner-stage__copy h1 { font-family: ... !important }` 在本主题里
+   不生效：组件用 `font: var(--m3e-type-headline-medium)` 简写定义字体，该简写
+   所处的层叠层优先级压过了无层（unlayered）的 !important 声明。实测同一条规则里
+   的 color / outline 能生效，唯独 font-family 不生效。
 
-   作用范围：只覆盖首页横幅的大标题 `.banner-stage__copy h1`，
-   正文、侧栏、文章标题等其他位置仍使用 fontConfig 中配置的字体。
+   因此改为覆写排版 token 变量 `--m3e-type-headline-medium`：CSS 变量可继承，
+   在 .banner-stage__copy 上重定义后，内部 h1 的
+   `font: var(--m3e-type-headline-medium)` 便会取到新值，绕开层叠层之争。
+
+   【字体文件】
+   不引用 npm 包 lxgw-wenkai-screen-webfont——它按 unicode-range 拆成 97 片，
+   标题里的拉丁字母与假名一片都没命中，浏览器直接回退成默认字体。
+   这里改用完整字体（25MB）按站点配置文本 + 基础 ASCII 共 552 字符子集化，
+   得到 135KB 单文件 woff2，一次请求覆盖标题所需全部字符。
+   标题文案改动后若出现缺字（回退），重新生成一次子集即可。字体许可：OFL 1.1。
 
    想换回原字体：把本文件从 src/styles/main.css 的 @import 中移除即可。
    ───────────────────────────────────────────────────────────────────────────── */
 
-@import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreen.css";
+@font-face {
+	font-family: "Shirone Banner Title";
+	src: url("/fonts/LXGWWenKaiScreen-title.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
 
-.banner-stage__copy h1 {
-	/* Astro 会给组件样式加 [data-astro-cid-*] 属性选择器，
-	   选择器权重高于本规则，故用 !important 保证覆盖生效。 */
-	font-family: "LXGW WenKai Screen", var(--font-sans) !important;
-	letter-spacing: 0.02em;
+/* 关键：必须写在 @layer base 里。
+   CSS 级联层规则中，分层的 !important 声明优先于无层（unlayered）的 !important，
+   而 base 是主题层序（properties, theme, base, components, utilities）里最早的层，
+   因此这里的 !important 能压过组件内 `font: var(--m3e-type-headline-medium)` 简写。 */
+@layer base {
+	.banner-stage__copy h1 {
+		font-family: "Shirone Banner Title", "Yozai Medium", system-ui, sans-serif !important;
+	}
 }
