@@ -7,6 +7,6 @@ import { withUserConfig } from "../utils/config-overlay.ts";
  * 关闭时（enable: false）零额外 DOM 占位、零文件读取开销。
  */
 export const footerConfig: FooterConfig = withUserConfig("footer", {
-	// 开启：把 src/config/FooterConfig.html 注入到页脚版权信息上方（目前是插画版权声明）
-	enable: true,
+	// 页脚自定义区默认关闭（FooterConfig.html 留空，需要时再打开并填入内容）
+	enable: false,
 });
