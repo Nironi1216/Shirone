@@ -24,8 +24,8 @@
 		"tailwindcss-4"
 	],
 	"scripts": {
-		"dev": "node scripts/content/sync.mjs && astro dev",
-		"start": "node scripts/content/sync.mjs && astro dev",
+		"dev": "node scripts/content/sync.mjs && node scripts/moments/sync.mjs && astro dev",
+		"start": "node scripts/content/sync.mjs && node scripts/moments/sync.mjs && astro dev",
 		"check": "astro check",
 		"content": "node scripts/content/cli.mjs",
 		"content:status": "node scripts/content/status.mjs",
@@ -42,9 +42,10 @@
 		"skills:package": "node scripts/package-skills.mjs",
 		"check:markdown-manifest": "node scripts/check-markdown-manifest.mjs",
 		"anime:sync": "node scripts/anime/sync.mjs",
+		"moments:sync": "node scripts/moments/sync.mjs",
 		"fonts:check": "node scripts/fonts/check-fonts.mjs",
 		"fonts:subset": "node scripts/fonts/subset-fonts.mjs",
-		"build": "node scripts/content/sync.mjs && astro build && npx pagefind --site dist && node scripts/fonts/check-fonts.mjs",
+		"build": "node scripts/content/sync.mjs && node scripts/moments/sync.mjs && astro build && npx pagefind --site dist && node scripts/fonts/check-fonts.mjs",
 		"preview": "astro preview",
 		"lighthouse:collect": "lhci collect --config=lighthouserc.cjs",
 		"lighthouse:assert": "lhci assert --config=lighthouserc.cjs",

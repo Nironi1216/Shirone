@@ -80,3 +80,7 @@ artifacts/lighthouse/*
 
 # generated AI skills plugin packages
 artifacts/shirone-ai-*
+
+# 外部来源抓取的动态：构建时生成，不入库（见 scripts/moments/sync.mjs）
+src/content/moments/social-*.md
+public/images/moments/social-*/

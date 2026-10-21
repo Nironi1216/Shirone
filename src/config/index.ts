@@ -50,6 +50,7 @@ export {
 export { licenseConfig } from "./licenseConfig";
 export { llmsConfig } from "./llmsConfig";
 export { momentsConfig } from "./momentsConfig";
+export { momentsSourcesConfig } from "./momentsSourcesConfig";
 export {
 	clampMusicVolume,
 	musicConfig,

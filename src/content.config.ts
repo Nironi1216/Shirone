@@ -77,6 +77,10 @@ const momentsCollection = defineCollection({
 		/** Mood icon (Iconify name, e.g. `material-symbols:sentiment-excited-outline-rounded`). */
 		mood: z.string().optional().default(""),
 		tags: z.array(z.string()).optional().default([]),
+		/** 动态来源：`mastodon` / `telegram`，手写的不填 */
+		source: z.string().optional().default(""),
+		/** 原文链接（外部来源抓取时写入） */
+		sourceUrl: z.string().optional().default(""),
 		images: z
 			.array(
 				z.object({

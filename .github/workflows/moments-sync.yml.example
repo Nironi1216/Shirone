@@ -1,0 +1,49 @@
+# 定时刷新外部来源的动态（Mastodon / Telegram）
+
+思路：手机上在 Mastodon 或 Telegram 发消息 = 发动态；构建时把公开内容抓回来，
+生成 `src/content/moments/social-*.md`。站点因此不需要服务端、登录或数据库。
+
+**启用方式**：复制为 `.github/workflows/moments-sync.yml`，并在仓库
+`Settings > Secrets and variables > Actions` 里添加 `VERCEL_DEPLOY_HOOK`
+（在 Vercel 项目 Settings > Git > Deploy Hooks 里创建）。
+扩展名保持 `.example` 时不会被 GitHub Actions 执行。
+
+name: Moments sync
+
+on:
+  # 每小时的第 17 分钟重建一次，把新发的消息抓进来。
+  # 想更实时就改成 "*/20 * * * *"，但注意 Vercel 的构建配额。
+  schedule:
+    - cron: "17 * * * *"
+  # GitHub 会延迟甚至跳过 cron（仓库长期无活动时会被禁用），手动触发兜底。
+  workflow_dispatch:
+
+concurrency:
+  group: moments-sync
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  trigger:
+    name: Trigger rebuild
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check config
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DEPLOY_HOOK:-}" ]; then
+            echo "缺少 secret: VERCEL_DEPLOY_HOOK" >&2
+            exit 1
+          fi
+      - name: Trigger platform build
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          # 只触发，不构建：抓取发生在平台侧的 pnpm build 里。
+          curl --fail-with-body --silent --show-error --retry 3 --retry-delay 2 \
+            --max-time 30 --request POST "$DEPLOY_HOOK"
