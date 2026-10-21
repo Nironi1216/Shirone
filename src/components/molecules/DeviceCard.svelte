@@ -331,7 +331,8 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 		display: -webkit-box
 		margin: 0
 		overflow: hidden
-		-webkit-line-clamp: 3
+		/* 4 行：设备描述普遍 70-85 字，3 行会截断结尾 */
+		-webkit-line-clamp: 4
 		-webkit-box-orient: vertical
 		color: var(--on-surface-variant)
 		font: var(--m3e-type-body-small)

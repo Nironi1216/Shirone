@@ -16,10 +16,9 @@ export const devicesData: DeviceItem[] = [
 		featured: true,
 		year: "2026",
 		description:
-			"首发入手的大折叠，也是主力机。8.12 英寸内屏看文档很舒服，折痕几乎摸不出来；225g 在折叠屏里算轻。分屏和自由窗口让我在外面改稿不用掏电脑。",
+			"首发当天抢的。原本担心买回来会一直合着用外屏，结果内屏比预想的好用，看文档、看漫画基本都摊开。缺点也实在：225g，放裤兜里会往下坠。",
 		specDetails: [
 			{ key: "purchase", label: "购入时间", value: "2026 年 3 月 20 日（首发）" },
-			{ key: "price", label: "首发价", value: "¥10,999（16GB + 512GB）" },
 			{ key: "color", label: "机身颜色", value: "原钛色" },
 			{ key: "soc", label: "处理平台", value: "第五代骁龙 8 至尊版（骁龙 8 Elite Gen 5），7 核最高 4.6GHz，Adreno 840" },
 			{ key: "memory", label: "内存 / 存储", value: "16GB LPDDR5X + 512GB UFS 4.1，不支持扩展" },
@@ -45,10 +44,9 @@ export const devicesData: DeviceItem[] = [
 		featured: true,
 		year: "2025",
 		description:
-			"写代码、写文章、剪短片都靠它。M4 能效很高，开一堆标签页机身只是温热；1.24kg 塞进背包没存在感。遗憾是两个雷雳口，扩展坞基本是标配。",
+			"上一台是 Windows 本，换过来之后就没再折腾系统。M4 编译的时候机身只是温的，也听不到风扇声。不太够用的是接口，只有两个雷雳，扩展坞从买回来那天就一直插着。",
 		specDetails: [
 			{ key: "purchase", label: "购入时间", value: "2025 年 5 月 18 日" },
-			{ key: "price", label: "首发价", value: "¥7,999（16GB + 256GB）" },
 			{ key: "color", label: "机身颜色", value: "天蓝色" },
 			{ key: "soc", label: "芯片", value: "Apple M4，10 核 CPU（4 性能 + 6 能效）/ 8 核 GPU / 16 核神经网络引擎" },
 			{ key: "memory", label: "内存", value: "16GB 统一内存，120GB/s 带宽" },
@@ -73,7 +71,7 @@ export const devicesData: DeviceItem[] = [
 		featured: true,
 		year: "2025",
 		description:
-			"通勤和写东西时的常驻耳机。双单元加丹拿调音，低频足而不糊，人声靠前。50dB 降噪能压住地铁轰鸣，单只 5.3g 戴一下午不胀耳。",
+			"通勤路上戴的。低音够，人声不糊，听流行和民谣都合适。降噪开到最深那档耳压有点闷，我一般用中档。单只 5.3g，戴一上午耳朵不疼。",
 		specDetails: [
 			{ key: "purchase", label: "购入时间", value: "2025 年 6 月 9 日" },
 			{ key: "version", label: "版本", value: "无线充版，雅黑" },
@@ -98,9 +96,9 @@ export const devicesData: DeviceItem[] = [
 		icon: "material-symbols:watch-outline",
 		year: "2025",
 		description:
-			"为了少看手机买的。46mm 在我手腕上刚好，阳光下屏幕也看得清；两周才充一次电，出差不用带充电器。睡眠分期和心率跟我实际感受对得上。",
+			"公司年会抽奖抽到的。本来对手表没多大兴趣，戴上之后意外的好用：两周充一次电，洗澡也懒得摘。跑步的轨迹和配速比手机记得准，睡眠分期跟我自己的感觉也对得上。",
 		specDetails: [
-			{ key: "purchase", label: "购入时间", value: "2025 年 2 月 14 日" },
+			{ key: "source", label: "获得方式", value: "2025 年 1 月 18 日，公司年会抽奖" },
 			{ key: "size", label: "规格", value: "46mm，不锈钢表壳" },
 			{ key: "display", label: "屏幕", value: "1.43 英寸 AMOLED，466 × 466" },
 			{ key: "battery", label: "续航", value: "典型场景约 14 天，重度使用约 9 天" },
@@ -123,10 +121,9 @@ export const devicesData: DeviceItem[] = [
 		featured: true,
 		year: "2025",
 		description:
-			"第一台认真拍照的机器。一半是实体拨盘的手感，一半是富士的色彩，Classic Neg 直出几乎不用修。425 点对焦抓人眼够快，追焦比不过新机型。",
+			"为了学拍照买的。选它主要图实体拨盘，光圈快门抬手就能调，不用一层层进菜单。抓人眼够快，拍跑起来的小孩就开始吃力。",
 		specDetails: [
 			{ key: "purchase", label: "购入时间", value: "2025 年 8 月 23 日" },
-			{ key: "price", label: "首发价", value: "¥5,299（单机身）" },
 			{ key: "sensor", label: "传感器", value: "2610 万像素 APS-C X-Trans CMOS 4，X-Processor 4 影像处理器" },
 			{ key: "iso", label: "感光度", value: "ISO 160–12800，可扩展至 80–51200" },
 			{ key: "af", label: "对焦", value: "425 点相位差混合对焦，支持人脸 / 人眼识别" },
