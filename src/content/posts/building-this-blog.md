@@ -18,7 +18,7 @@ draft: false
 
 ## 环境
 
-这台机器没 Homebrew，`/usr/local` 不可写，`brew install node` 走不通。最后是下官方 tarball 解压到 `~/.local/nodejs`，路径写进 `.zshrc`；pnpm 用 npm 全局装；SSH 密钥换 ed25519。
+这台机器没 Homebrew，`/usr/local` 不可写，`brew install node` 走不通。最后是下官方 tarball 解压到 `~/.local/nodejs`，路径写进 `.zshrc`；pnpm 用 npm 全局装，Git 推送配成免密的。
 
 ## 壁纸
 
@@ -69,11 +69,11 @@ Vercel 导入仓库，绑 `neyuu.fun`。两个点：
 
 ## 为了能随手发条动态，绕了三圈
 
-第一圈做了个网页，填 GitHub Token 就能直接发动态。做完自己就觉得鸡肋，每次发还要去翻一遍 Token，不如开电脑写。
+第一圈做了个网页，登录授权一次就能直接发动态。做完自己就觉得鸡肋，每次发还得先去翻一遍授权，不如开电脑写。
 
 ![第一版的发动态页面，后来整个回退了](/images/posts/building-this-blog/publish-draft.webp)
 
-第二圈改成账号登录，邮箱加密码，由服务端代写 GitHub。写到一半放弃了，因为那意味着要引入运行时，静态博客为了发条动态去养个后端，本末倒置。
+第二圈改成账号登录，由服务端代写仓库。写到一半放弃了，因为那意味着要引入运行时，静态博客为了发条动态去养个后端，本末倒置。
 
 第三圈是现在定的：把社交 App 当输入法。手机上在 Mastodon 或者 Telegram 发消息，构建时抓回来变成动态。站点还是纯静态，没有服务端、没有登录、没有数据库，代价是发完要等下一次构建。
 
