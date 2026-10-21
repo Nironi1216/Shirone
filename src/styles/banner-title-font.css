@@ -1,40 +1,26 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   首页横幅标题专用字体：霞鹜文楷 LXGW WenKai（Screen 版）
+   首页横幅标题字体
    ─────────────────────────────────────────────────────────────────────────────
-   【为什么这样写】
-   直接写 `.banner-stage__copy h1 { font-family: ... !important }` 在本主题里
-   不生效：组件用 `font: var(--m3e-type-headline-medium)` 简写定义字体，该简写
-   所处的层叠层优先级压过了无层（unlayered）的 !important 声明。实测同一条规则里
-   的 color / outline 能生效，唯独 font-family 不生效。
+   全站中文已统一为霞鹜文楷（见 src/config/fontConfig.ts 的 cjk 角色），
+   这里额外做一件事：让标题里的**拉丁字母**也走文楷，而不是默认的 Outfit。
 
-   因此改为覆写排版 token 变量 `--m3e-type-headline-medium`：CSS 变量可继承，
-   在 .banner-stage__copy 上重定义后，内部 h1 的
-   `font: var(--m3e-type-headline-medium)` 便会取到新值，绕开层叠层之争。
+   原因：标题的默认字体栈是 var(--font-sans) = Outfit → 文楷，
+   站名「Neyuuのblog」以拉丁字母为主，会优先命中 Outfit，
+   与后面的「の」形成字体割裂。改用 --font-cjk 打头即可整体统一。
 
-   【字体文件】
-   不引用 npm 包 lxgw-wenkai-screen-webfont——它按 unicode-range 拆成 97 片，
-   标题里的拉丁字母与假名一片都没命中，浏览器直接回退成默认字体。
-   这里改用完整字体（25MB）按站点配置文本 + 基础 ASCII 共 552 字符子集化，
-   得到 135KB 单文件 woff2，一次请求覆盖标题所需全部字符。
-   标题文案改动后若出现缺字（回退），重新生成一次子集即可。字体许可：OFL 1.1。
+   【必须写在 @layer base 里】
+   主题在 <style>@layer properties, theme, base, components, utilities</style>
+   声明了层序，而 CSS 级联层规则中「分层内的 !important 优先于无层的 !important」，
+   无层写法会被组件内 `font: var(--m3e-type-headline-medium)` 简写静默压制。
+
+   注意：--font-cjk 由 Astro Fonts 注入，真实族名带哈希后缀
+   （形如 "LXGW WenKai Screen-96f29fbf5ba350a5"），因此只能通过变量引用，不能硬编码族名。
 
    想换回原字体：把本文件从 src/styles/main.css 的 @import 中移除即可。
    ───────────────────────────────────────────────────────────────────────────── */
 
-@font-face {
-	font-family: "Shirone Banner Title";
-	src: url("/fonts/LXGWWenKaiScreen-title.woff2") format("woff2");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-/* 关键：必须写在 @layer base 里。
-   CSS 级联层规则中，分层的 !important 声明优先于无层（unlayered）的 !important，
-   而 base 是主题层序（properties, theme, base, components, utilities）里最早的层，
-   因此这里的 !important 能压过组件内 `font: var(--m3e-type-headline-medium)` 简写。 */
 @layer base {
 	.banner-stage__copy h1 {
-		font-family: "Shirone Banner Title", "Yozai Medium", system-ui, sans-serif !important;
+		font-family: var(--font-cjk), system-ui, sans-serif !important;
 	}
 }

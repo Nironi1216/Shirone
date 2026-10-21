@@ -80,17 +80,18 @@ export const fontConfig: FontConfig = withUserConfig("font", {
 		},
 
 		// ---------------------------------------------------------------------
-		// 2. 中文 / 日文 CJK 字体（悠哉圆体 Yozai Medium，全量简繁中日韩 100% 覆盖）
+		// 2. 中文 / 日文 CJK 字体（霞鹜文楷 LXGW WenKai Screen，楷体风格，OFL 可商用）
+		//    构建时按站点实际用到的字符子集化，源文件 25MB → 产物通常几百 KB
 		// ---------------------------------------------------------------------
 		{
-			id: "yozai-cjk",
-			family: "Yozai Medium",
+			id: "wenkai-cjk",
+			family: "LXGW WenKai Screen",
 			role: "cjk",
 			source: "local",
 			variants: [
 				{
-					file: "src/assets/fonts/Yozai-Medium.ttf",
-					weight: 500,
+					file: "src/assets/fonts/LXGWWenKaiScreen-Regular.ttf",
+					weight: 400,
 					style: "normal",
 				},
 			],
