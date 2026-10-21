@@ -1,0 +1,20 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   首页横幅标题专用字体：霞鹜文楷 LXGW WenKai Screen
+   ─────────────────────────────────────────────────────────────────────────────
+   字体文件来自项目依赖 `lxgw-wenkai-screen-webfont`（OFL 协议，可商用），
+   随构建一起打包，因此 Windows / 安卓 / iOS 访客的显示完全一致。
+
+   作用范围：只覆盖首页横幅的大标题 `.banner-stage__copy h1`，
+   正文、侧栏、文章标题等其他位置仍使用 fontConfig 中配置的字体。
+
+   想换回原字体：把本文件从 src/styles/main.css 的 @import 中移除即可。
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreen.css";
+
+.banner-stage__copy h1 {
+	/* Astro 会给组件样式加 [data-astro-cid-*] 属性选择器，
+	   选择器权重高于本规则，故用 !important 保证覆盖生效。 */
+	font-family: "LXGW WenKai Screen", var(--font-sans) !important;
+	letter-spacing: 0.02em;
+}

@@ -28,6 +28,8 @@
    also remain unlayered to participate in the same cascade. */
 @import "./toc.css" layer(components);
 @import "./image-bloom.css" layer(components);
+/* 首页横幅标题字体（霞鹜文楷）。必须保持无 layer，才能覆盖组件内的字体声明。 */
+@import "./banner-title-font.css";
 
 @layer base {
     /* 常驻预留经典滚动条槽位。文档级布局宽度（`#main-layout` 是 `w-full` 的
