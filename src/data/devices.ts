@@ -121,7 +121,7 @@ export const devicesData: DeviceItem[] = [
 		featured: true,
 		year: "2025",
 		description:
-			"为了学拍照买的。选它主要图实体拨盘，光圈快门抬手就能调，不用一层层进菜单。抓人眼够快，拍跑起来的小孩就开始吃力。",
+			"为了学拍照买的。选它主要图实体拨盘，光圈快门抬手就能调，不用一层层进菜单。对焦够快，拍跑起来的小咪就开始吃力。",
 		specDetails: [
 			{ key: "purchase", label: "购入时间", value: "2025 年 8 月 23 日" },
 			{ key: "sensor", label: "传感器", value: "2610 万像素 APS-C X-Trans CMOS 4，X-Processor 4 影像处理器" },
