@@ -144,7 +144,8 @@ const defaultNavBarConfig: NavBarConfig = {
 		LinkPresets.Friends,
 		LinkPresets.Moments,
 		LinkPresets.Anime,
-		LinkPresets.Compass,
+		// 站点罗盘已关闭（compassConfig.enable = false），此位置改由「关于」占位
+		LinkPresets.About,
 		LinkPresets.Albums,
 		{
 			name: i18n(I18nKey.more),
@@ -159,7 +160,6 @@ const defaultNavBarConfig: NavBarConfig = {
 				// 需要时取消注释即可
 				// LinkPresets.Categories,
 				// LinkPresets.Tags,
-				LinkPresets.About,
 				LinkPresets.GitHub,
 			],
 		},
