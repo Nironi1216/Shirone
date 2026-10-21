@@ -51,8 +51,11 @@ src/generated/local-icon-collections.ts
 *.iml
 
 # anime snapshot data & downloaded covers
-src/data/anime-snapshots/*.json
-public/assets/anime/covers/*
+# 本站以 fork 作为站点仓库使用，番剧快照需要在构建期可用（Vercel 构建不会执行
+# pnpm anime:sync，缺快照会回退成 src/data/anime.ts 的演示数据），因此这里不做忽略。
+# 若你改回「主题开发仓」的用法，可重新放开下面两行。
+# src/data/anime-snapshots/*.json
+# public/assets/anime/covers/*
 !public/assets/anime/covers/.gitkeep
 
 # generated responsive moment thumbnails
