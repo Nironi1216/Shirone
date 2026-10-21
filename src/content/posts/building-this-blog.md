@@ -10,8 +10,6 @@ draft: false
 
 # 把博客搭起来这件事
 
-![手机端首页](/images/posts/building-this-blog/home-mobile.webp)
-
 从 fork 主题到绑上域名拢共没几天，坑不少。记一下，省得过两个月忘了当初为什么这么配。
 
 主题是 [Shirone](https://github.com/LyraVoid/Shirone)，Astro 7 + Svelte 5 + Tailwind 4，白净克制。
