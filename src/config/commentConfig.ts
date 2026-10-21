@@ -55,13 +55,10 @@ export const commentConfig: CommentConfig = withUserConfig("comment", {
 		/** Discussion 分类名，如 "Announcements"；留空表示不限制分类搜索范围 */
 		category: "Announcements",
 		/**
-		 * 分类 ID（必填）。仓库尚未开启 Discussions，暂无法获取。
-		 * 开启 Discussions 后用
-		 * `curl https://api.github.com/repos/Nironi1216/Shirone/discussions/categories`
-		 * 取 Announcements 的 id 填入即可生效。
-		 * 留空时 resolveCommentOptions 返回 null，评论区不渲染，无副作用。
+		 * 分类 ID（必填）。取自 giscus.app 生成的 data-category-id。
+		 * 对应 Announcements 分类。
 		 */
-		categoryId: "",
+		categoryId: "R_kgDOVQuNNw",
 		/** 页面 ↔ Discussion 映射：pathname（默认）/ url / title / og:title / specific / number */
 		mapping: "pathname",
 		/** 严格标题匹配（SHA-1 校验），避免 GitHub 模糊搜索误配相似标题 */
