@@ -107,6 +107,28 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 
 		<p class="device-card__description">{device.description}</p>
 
+		{#if device.specDetails?.length}
+			<details class="device-card__details">
+				<summary class="device-card__details-toggle">
+					<Icon icon="material-symbols:list-alt-outline-rounded" aria-hidden="true" />
+					<span>{i18n(I18nKey.devicesViewSpecs)}</span>
+					<Icon
+						class="device-card__details-caret"
+						icon="material-symbols:expand-more-rounded"
+						aria-hidden="true"
+					/>
+				</summary>
+				<dl class="device-card__spec-list">
+					{#each device.specDetails as spec (spec.key)}
+						<div class="device-card__spec-row">
+							<dt>{spec.label}</dt>
+							<dd>{spec.value}</dd>
+						</div>
+					{/each}
+				</dl>
+			</details>
+		{/if}
+
 		<div class="device-card__footer">
 			{#if device.link}
 				<a
@@ -193,6 +215,7 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 
 	&__header
 		display: flex
+		flex-wrap: wrap
 		align-items: flex-start
 		gap: var(--m3e-space-3)
 		min-width: 0
@@ -224,10 +247,11 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 			transform: translateY(-0.125rem)
 			box-shadow: var(--m3e-elevation-1)
 
+	/* 标题区给足基准宽度：空间不足时让状态 pill 换行，而不是压窄标题把单词拆断 */
 	&__heading
 		display: flex
 		flex-direction: column
-		flex: 1
+		flex: 1 1 7rem
 		gap: 0.25rem
 		min-width: 0
 
@@ -245,7 +269,7 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 		font: var(--m3e-type-title-small)
 		font-weight: 700
 		line-height: 1.3
-		overflow-wrap: anywhere
+		overflow-wrap: break-word
 		transition: color var(--m3e-duration-short) var(--m3e-easing-standard)
 
 		.device-card:hover &
@@ -312,6 +336,68 @@ const showImage = $derived(Boolean(device.image) && !coverFailed);
 		color: var(--on-surface-variant)
 		font: var(--m3e-type-body-small)
 		line-height: 1.5
+
+	/* 完整规格：原生 details 折叠，无 JS */
+	&__details
+		border-top: 1px dashed var(--outline-variant)
+		padding-top: var(--m3e-space-2)
+
+	&__details-toggle
+		display: flex
+		align-items: center
+		gap: 0.375rem
+		padding: 0.25rem 0
+		color: var(--primary)
+		font: var(--m3e-type-label-medium)
+		font-weight: 600
+		cursor: pointer
+		list-style: none
+		user-select: none
+		transition: color var(--m3e-duration-short) var(--m3e-easing-standard)
+
+		&::-webkit-details-marker
+			display: none
+
+		&:hover
+			color: var(--on-surface)
+
+		> :global(svg)
+			width: 1rem
+			height: 1rem
+			flex-shrink: 0
+
+	&__details-caret
+		margin-left: auto
+		transition: transform var(--m3e-duration-short) var(--m3e-easing-emphasized-decelerate)
+
+	&__details[open] &__details-caret
+		transform: rotate(180deg)
+
+	&__spec-list
+		display: flex
+		flex-direction: column
+		gap: 0.375rem
+		margin: 0
+		padding: var(--m3e-space-2) 0 0
+
+	&__spec-row
+		display: grid
+		grid-template-columns: 4.75rem 1fr
+		gap: 0.625rem
+		align-items: baseline
+
+		> dt
+			color: var(--on-surface-variant)
+			font: var(--m3e-type-label-small)
+			font-weight: 600
+			opacity: 0.85
+
+		> dd
+			margin: 0
+			color: var(--on-surface)
+			font: var(--m3e-type-body-small)
+			line-height: 1.45
+			overflow-wrap: anywhere
 
 	&__footer
 		display: flex
