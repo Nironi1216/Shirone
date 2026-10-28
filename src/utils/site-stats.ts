@@ -24,6 +24,11 @@ export interface SiteStats {
 	words: number;
 	/** 运行天数：以最早一篇文章的发布日为起点（无文章则 0） */
 	days: number;
+	/**
+	 * 最早发布日的 ISO 字符串（无文章为 null）。
+	 * 构建期算出的 days 会随构建冻结，前端据此在浏览器里实时重算。
+	 */
+	startedAt: string | null;
 	/** 最近更新：全站最新一篇的发布/更新日（ISO 字符串；无文章为 null） */
 	lastActivity: string | null;
 }
@@ -70,6 +75,9 @@ export async function getSiteStats(): Promise<SiteStats> {
 		days: Number.isFinite(earliest)
 			? Math.max(0, Math.floor((Date.now() - earliest) / DAY_MS))
 			: 0,
+		startedAt: Number.isFinite(earliest)
+			? new Date(earliest).toISOString()
+			: null,
 		lastActivity:
 			latestActivity > 0 ? new Date(latestActivity).toISOString() : null,
 	};

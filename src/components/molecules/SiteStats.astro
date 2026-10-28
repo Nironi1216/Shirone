@@ -35,7 +35,17 @@ const todayText = i18n(I18nKey.statsToday);
 const yesterdayText = i18n(I18nKey.statsYesterday);
 const daysAgoText = i18n(I18nKey.statsDaysAgo);
 
-const rows = [
+interface StatRow {
+	icon: string;
+	label: string;
+	value: string;
+	/** 最近更新行：值由脚本升级为相对时间 */
+	relative?: boolean;
+	/** 运行天数行：携带最早发布日，供脚本实时重算 */
+	daysSince?: string | null;
+}
+
+const rows: StatRow[] = [
 	{
 		icon: "material-symbols:article-outline-rounded",
 		label: i18n(I18nKey.statsPosts),
@@ -75,6 +85,7 @@ const rows = [
 		icon: "material-symbols:calendar-month-outline-rounded",
 		label: i18n(I18nKey.statsDays),
 		value: fmt(stats.days),
+		daysSince: stats.startedAt,
 	},
 	{
 		icon: "material-symbols:update-rounded",
@@ -95,6 +106,7 @@ const rows = [
 				<span
 					class="m3-site-stats__value"
 					data-last-update={row.relative ? "" : undefined}
+					data-days-since={row.daysSince ?? undefined}
 					>{row.value}</span
 				>
 			</li>
@@ -139,19 +151,33 @@ const rows = [
 </style>
 
 <script is:inline define:vars={{ lastActivityISO: stats.lastActivity, todayText, yesterdayText, daysAgoText }}>
-	// 最近更新相对化：按本地时区取日界，差值恒为整天数；
-	// 无文章或脚本禁用时保留 SSR 的绝对日期
+	// 两处都按本地时区取日界，差值恒为整天数
 	(() => {
-		const el = document.querySelector("[data-last-update]");
-		if (!el || !lastActivityISO) return;
 		const DAY_MS = 86_400_000;
 		const dayStart = (d) =>
 			new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
-		const diffDays = Math.round(
-			(dayStart(new Date()) - dayStart(new Date(lastActivityISO))) / DAY_MS,
-		);
-		if (diffDays <= 0) el.textContent = todayText;
-		else if (diffDays === 1) el.textContent = yesterdayText;
-		else el.textContent = daysAgoText.replace("{days}", String(diffDays));
+		const daysSince = (iso) =>
+			Math.max(
+				0,
+				Math.round((dayStart(new Date()) - dayStart(new Date(iso))) / DAY_MS),
+			);
+
+		// 最近更新：SSR 输出绝对日期，这里升级为「今天 / 昨天 / N 天前」；
+		// 无文章或脚本禁用时保留 SSR 的绝对日期
+		const lastEl = document.querySelector("[data-last-update]");
+		if (lastEl && lastActivityISO) {
+			const diffDays = daysSince(lastActivityISO);
+			if (diffDays <= 0) lastEl.textContent = todayText;
+			else if (diffDays === 1) lastEl.textContent = yesterdayText;
+			else lastEl.textContent = daysAgoText.replace("{days}", String(diffDays));
+		}
+
+		// 运行天数：构建期算出的值是静态的，会一直停在上次构建那天，
+		// 这里按「最早发布日 → 今天」实时重算，不重建也能涨。
+		document.querySelectorAll("[data-days-since]").forEach((el) => {
+			const iso = el.getAttribute("data-days-since");
+			if (!iso) return;
+			el.textContent = daysSince(iso).toLocaleString("en-US");
+		});
 	})();
 </script>
